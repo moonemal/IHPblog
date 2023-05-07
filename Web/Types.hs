@@ -9,6 +9,8 @@ data WebApplication = WebApplication deriving (Eq, Show)
 
 data StaticController = WelcomeAction deriving (Eq, Show, Data)
 
+
+
 data PostsController
     = PostsAction
     | NewPostAction
@@ -17,14 +19,4 @@ data PostsController
     | EditPostAction { postId :: !(Id Post) }
     | UpdatePostAction { postId :: !(Id Post) }
     | DeletePostAction { postId :: !(Id Post) }
-    deriving (Eq, Show, Data)
-
-data CommentsController
-    = CommentsAction
-    | NewCommentAction
-    | ShowCommentAction { commentId :: !(Id Comment) }
-    | CreateCommentAction
-    | EditCommentAction { commentId :: !(Id Comment) }
-    | UpdateCommentAction { commentId :: !(Id Comment) }
-    | DeleteCommentAction { commentId :: !(Id Comment) }
     deriving (Eq, Show, Data)
