@@ -1,6 +1,6 @@
 module Web.View.Posts.New where
 import Web.View.Prelude
-
+data ShowView = ShowView { post :: Post }
 data NewView = NewView { post :: Post }
 
 instance View NewView where
@@ -14,11 +14,18 @@ instance View NewView where
                 [ breadcrumbLink "Posts" PostsAction
                 , breadcrumbText "New Post"
                 ]
-
+instance View ShowView where
+    html ShowView { .. } = [hsx|
+     <form method="POST" action={upvotePath}>
+            <button>Upvote</button>
+        </form>
+    |]
+        where
+            upvotePath = pathTo $ UpvotePostAction (get #id post)
 renderForm :: Post -> Html
 renderForm post = formFor post [hsx|
     {(textField #title)}
-    {(textField #body)}
+    {(textareaField #body) { helpText = "You can use Markdown here"} }
     {submitButton}
 
 |]

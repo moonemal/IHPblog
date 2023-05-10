@@ -1,0 +1,6 @@
+ALTER TABLE posts ALTER COLUMN upvote SET NOT NULL;
+ALTER TABLE users ALTER COLUMN locked_at SET DEFAULT null;
+CREATE OR REPLACE FUNCTION set_updated_at_to_now() RETURNS TRIGGER AS $$BEGIN
+    NEW.updated_at = NOW();
+    RETURN NEW;
+END;$$ language PLPGSQL;
