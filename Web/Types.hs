@@ -1,3 +1,4 @@
+
 module Web.Types where
 import IHP.LoginSupport.Types
 import IHP.Prelude
@@ -33,22 +34,27 @@ data CommentsController
     | UpdateCommentAction { commentId :: !(Id Comment) }
     | DeleteCommentAction { commentId :: !(Id Comment) }
     deriving (Eq, Show, Data)
-    
-data SessionsController
-    = NewSessionAction
-    | CreateSessionAction
-    | DeleteSessionAction
-    deriving (Eq, Show, Data)
 
 instance HasNewSessionUrl User where
     newSessionUrl _ = "/NewSession"
 
 type instance CurrentUserRecord = User
 
+data SessionsController
+    = NewSessionAction
+    | CreateSessionAction
+    | DeleteSessionAction
+    deriving (Eq, Show, Data)
 
---data ReactToPostAction
-  --  = ReactToPostAction
-    --    { postId :: !PostId
-      --  , reactionType :: !ReactionType
-       -- }
-    --deriving (Eq, Show, Data)
+
+
+
+data SessionsControllerController
+    = SessionsControllersAction
+    | NewSessionsControllerAction
+    | ShowSessionsControllerAction { sessionsControllerId :: !(Id SessionsController) }
+    | CreateSessionsControllerAction
+    | EditSessionsControllerAction { sessionsControllerId :: !(Id SessionsController) }
+    | UpdateSessionsControllerAction { sessionsControllerId :: !(Id SessionsController) }
+    | DeleteSessionsControllerAction { sessionsControllerId :: !(Id SessionsController) }
+    deriving (Eq, Show,Data)
