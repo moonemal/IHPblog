@@ -46,15 +46,3 @@ data SessionsController
     | DeleteSessionAction
     deriving (Eq, Show, Data)
 
-
-
-
-data SessionsControllerController
-    = SessionsControllersAction
-    | NewSessionsControllerAction
-    | ShowSessionsControllerAction { sessionsControllerId :: !(Id SessionsController) }
-    | CreateSessionsControllerAction
-    | EditSessionsControllerAction { sessionsControllerId :: !(Id SessionsController) }
-    | UpdateSessionsControllerAction { sessionsControllerId :: !(Id SessionsController) }
-    | DeleteSessionsControllerAction { sessionsControllerId :: !(Id SessionsController) }
-    deriving (Eq, Show,Data)

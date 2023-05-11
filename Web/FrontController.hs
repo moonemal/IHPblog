@@ -18,7 +18,6 @@ instance FrontController WebApplication where
     controllers = 
         [ startPage WelcomeAction
         -- Generator Marker
-        , parseRoute @SessionsControllerController
  --       , parseRoute @ReactionController
         , parseRoute @SessionsController
         , parseRoute @CommentsController
