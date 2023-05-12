@@ -61,12 +61,12 @@ instance Controller PostsController where
         setSuccessMessage "Post deleted"
         redirectTo PostsAction
     
-    action UpvotePostAction { postId } = do
-        post <- fetch postId
-        let newPost = post |> set #upvotes (succ $ get @Int #upvotes )
-        updateRecord newPost
-        setSuccessMessage "Post upvoted"
-        redirectTo $ ShowPostAction postId
+  --  action UpvotePostAction { postId } = do
+    --    post <- fetch postId
+      --  let newPost = post |> set #upvotes (succ $ get @Int #upvotes )
+        --updateRecord newPost
+        --setSuccessMessage "Post upvoted"
+        --redirectTo $ ShowPostAction postId
     
 
 
