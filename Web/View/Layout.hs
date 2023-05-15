@@ -26,6 +26,7 @@ defaultLayout inner = H.docTypeHtml ! A.lang "en" $ [hsx|
         {inner}
     </div>
 </body>
+<a class="js-delete js-delete-no-confirm" href={DeleteSessionAction}>Logout</a>
 |]
 
 -- The 'assetPath' function used below appends a `?v=SOME_VERSION` to the static assets in production

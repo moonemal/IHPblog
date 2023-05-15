@@ -60,7 +60,22 @@ instance Controller PostsController where
         deleteRecord post
         setSuccessMessage "Post deleted"
         redirectTo PostsAction
-    
+
+    action UpvoteAction { postId } = do
+        post <- fetch postId
+
+        let upvotesIds = (map Id . get #upvote) post
+
+        let newUpvotes = if currentUserId `elem` upvotesIds then
+                            filter (/= currentUserId) upvotesIds
+                         else
+                            upvotesIds ++ [currentUserId]
+
+        let newUpvotesUUID = map unpackId newUpvotes
+
+        post |> set #upvote newUpvotesUUID |> updateRecord
+        redirectTo $ EditPostAction postId
+
   --  action UpvotePostAction { postId } = do
     --    post <- fetch postId
       --  let newPost = post |> set #upvotes (succ $ get @Int #upvotes )
