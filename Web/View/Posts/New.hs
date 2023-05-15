@@ -21,7 +21,7 @@ instance View ShowView where
         </form>
     |]
         where
-            upvotePath = pathTo $ UpvotePostAction (get #id post)
+            upvotePath = pathTo $ UpvoteAction (get #id post)
 renderForm :: Post -> Html
 renderForm post = formFor post [hsx|
     {(textField #title)}

@@ -7,6 +7,7 @@ instance View EditView where
     html EditView { .. } = [hsx|
         {breadcrumb}
         <h1>Edit User</h1>
+        <a href={NewSessionAction}>Login</a>
         {renderForm user}
     |]
         where
@@ -19,7 +20,7 @@ renderForm :: User -> Html
 renderForm user = formFor user [hsx|
     {(textField #email)}
     {(textField #passwordHash)}
-    {(textField #failedLoginAttempts)}
+    {(hiddenField #failedLoginAttempts)}
     {submitButton}
 
 |]

@@ -21,7 +21,7 @@ data PostsController
     | EditPostAction { postId :: !(Id Post) }
     | UpdatePostAction { postId :: !(Id Post) }
     | DeletePostAction { postId :: !(Id Post) }
-    | UpvotePostAction { postId :: !(Id Post) }
+    | UpvoteAction { postId :: !(Id Post) }
     deriving (Eq, Show, Data)
 
 
@@ -35,10 +35,6 @@ data CommentsController
     | DeleteCommentAction { commentId :: !(Id Comment) }
     deriving (Eq, Show, Data)
 
-instance HasNewSessionUrl User where
-    newSessionUrl _ = "/NewSession"
-
-type instance CurrentUserRecord = User
 
 data SessionsController
     = NewSessionAction
@@ -56,3 +52,8 @@ data UsersController
     | UpdateUserAction { userId :: !(Id User) }
     | DeleteUserAction { userId :: !(Id User) }
     deriving (Eq, Show, Data)
+
+instance HasNewSessionUrl User where
+    newSessionUrl _ = "/NewSession"
+
+type instance CurrentUserRecord = User

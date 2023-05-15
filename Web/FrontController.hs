@@ -4,7 +4,7 @@ import IHP.RouterPrelude
 import IHP.LoginSupport.Middleware
 import Web.Controller.Prelude
 import Web.View.Layout (defaultLayout)
-
+import Web.Controller.Sessions 
 -- Controller Imports
 import Web.Controller.Users
 
@@ -23,6 +23,7 @@ instance FrontController WebApplication where
         , parseRoute @CommentsController
         , parseRoute @PostsController
         , parseRoute @UsersController
+        , parseRoute @SessionsController
         
  
         ]
